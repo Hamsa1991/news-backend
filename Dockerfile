@@ -1,24 +1,21 @@
 # Use the official PHP image with Apache
 FROM php:8.2-apache
 
-# Install required PHP extensions
-RUN apt-get update && apt-get install -y libzip-dev unzip \
-    && docker-php-ext-install pdo pdo_mysql zip
-
-# Enable mod_rewrite for Apache
-RUN a2enmod rewrite
-
-# Set the working directory
 WORKDIR /var/www/html
 
-# Copy the application code
-COPY . .
+# Install required dependencies
+RUN a2enmod rewrite
+RUN apt-get update && apt-get -y install gcc mono-mcs && rm -rf /var/lib/apt/lists/*
+RUN apt-get update -y && apt-get install -y libicu-dev libmariadb-dev unzip zip zlib1g-dev libpng-dev libjpeg-dev libfreetype6-dev libjpeg62-turbo-dev libpng-dev default-libmysqlclient-dev gcc
+RUN apt-get -y update; apt-get -y install curl
 
 # Install Composer
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Run composer to install PHP dependencies
-RUN composer install --no-interaction --prefer-dist --optimize-autoloader
+# Install PHP extensions
+RUN docker-php-ext-install gettext intl pdo_mysql gd
+RUN docker-php-ext-configure gd --enable-gd --with-freetype --with-jpeg && docker-php-ext-install -j$(nproc) gd
 
-# Set permissions for storage and bootstrap/cache
-RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
+# Change ownership of the /var/www/html directory
+RUN chown -R www-data:www-data /var/www/html
+COPY ./apache.conf /etc/apache2/sites-available/000-default.conf

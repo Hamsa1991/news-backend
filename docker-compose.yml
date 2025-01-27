@@ -1,27 +1,27 @@
-
 services:
-    app:
-        build:
-            context: .
-            dockerfile: Dockerfile
+    laravel-docker:
+        container_name: laravel-docker
+        build: .
         volumes:
             - .:/var/www/html
         ports:
-            - "8000:80"
-        depends_on:
-            - db
+            - 9000:80
+        extra_hosts:
+            - "myapp.local:192.168.0.188"
+        env_file:
+            - .env
 
-    db:
-        image: mysql:5.7
-        volumes:
-            - dbdata:/var/lib/mysql
+    mysql_db:
+        image: mysql:latest
         environment:
+            MYSQL_ROOT_PASSWORD: root
             MYSQL_DATABASE: news_db
-            MYSQL_USER: user
-            MYSQL_PASSWORD:
-            MYSQL_ROOT_PASSWORD:
         ports:
-            - "3306:3306"
+            - 3306:3306
 
-volumes:
-    dbdata:
+    phpmyadmin:
+        image: phpmyadmin:latest
+        ports:
+            - 9001:80
+        environment:
+            - PMA_ARBITRARY=1

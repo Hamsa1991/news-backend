@@ -1,70 +1,56 @@
 # Laravel and React Project
 
-## Note
-Because of issues with using Docker on windows, the docker configuration files were uploaded but not run.
-So please follow the steps to run the projects
 
 ## Overview 
-This project combines a Laravel backend with a React frontend. Follow the instructions below to set up and run the project locally.
+This project is a Laravel backend. Follow the instructions below to set up and run the project locally.
 
 ## Prerequisites
-- PHP (>= 7.3)
-- Composer
-- Node.js (>= 14.x)
-- npm
-- A running MySQL database
+Install Docker and Docker Compose: Ensure that Docker and Docker Compose are installed on your device. You can download and install Docker Desktop from the official Docker website or follow instructions for your specific operating system.
 
 ## Installation
 
 ### 1. Clone the Repository
 ```
-git clone https://github.com/Hamsa1991/news-project.git
-```
-
-### Backend Setup (Laravel)
-
-#### Step 1: Install Composer Dependencies
-Navigate to the Laravel project directory and install the necessary packages using Composer:
-```
+git clone https://github.com/Hamsa1991/news-app.git
 cd path/to/laravel/project
-composer install
 ```
 
+### 2. Setup
 
-#### Setup the Environment
-Copy the .env.example file to .env:
+###Configure the .env File (if needed)
 ```
-cp .env.example .env
-```
-
-
-#### Update the .env file with your database credentials.
-
-```
-php artisan key:generate
-```
-
-import mysql database
-
-Start the Laravel Server
-```
-php artisan serve
-```
-
-Frontend Setup (React)
-Navigate to React Project inside the laravel project
+DB_CONNECTION=mysql
+DB_HOST=db
+DB_PORT=3306
+DB_DATABASE=news_db
+DB_USERNAME=root
+DB_PASSWORD=
 
 ```
-cd news-react
+
+### 3. Build and start the containers
+In the terminal, navigate to the directory containing your Dockerfile and docker-compose.yml, then run:
 ```
 
-Install Node Modules
-```
-npm install
-npm run dev
+docker-compose build
+docker-compose up -d
 ```
 
-The React app will run on http://localhost:3000
-Make sure the Laravel server is running before trying to access any backend functionality from the React app.
+###4. Install Composer Dependencies
+```$xslt
+docker-compose exec app composer install
+```
+
+###5. Run Migrations
+```$xslt
+docker-compose exec app php artisan migrate
+```
+
+###6. Access your application:
+```
+http://localhost:9000
+```
+ For phpMyAdmin, you can go to http://localhost:9001
+
 
 
