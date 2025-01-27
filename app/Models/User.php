@@ -52,3 +52,4 @@ class User extends Authenticatable
         return $this->belongsToMany(Author::class, 'user_authors');
     }
 }
+
