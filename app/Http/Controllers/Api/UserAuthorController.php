@@ -27,6 +27,5 @@ class UserAuthorController extends Controller
             Log::error("Error in saving favourite authors: " . $exception->getMessage());
             return response()->json(['message' => 'An error occurred while saving favorite authors.'], 500);
         }
-
     }
 }
