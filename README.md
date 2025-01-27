@@ -11,13 +11,13 @@ Install Docker and Docker Compose: Ensure that Docker and Docker Compose are ins
 
 ### 1. Clone the Repository
 ```
-git clone https://github.com/Hamsa1991/news-app.git
+git clone https://github.com/Hamsa1991/news-backend.git
 cd path/to/laravel/project
 ```
 
 ### 2. Setup
 
-###Configure the .env File (if needed)
+### Configure the .env File (if needed)
 ```
 DB_CONNECTION=mysql
 DB_HOST=db
@@ -36,21 +36,28 @@ docker-compose build
 docker-compose up -d
 ```
 
-###4. Install Composer Dependencies
+### 4. Install Composer Dependencies
 ```$xslt
 docker-compose exec app composer install
 ```
 
-###5. Run Migrations
+### 5. Run Migrations
 ```$xslt
 docker-compose exec app php artisan migrate
 ```
 
-###6. Access your application:
+### 6. Access your application:
 ```
 http://localhost:9000
 ```
  For phpMyAdmin, you can go to http://localhost:9001
+ 
+ To fetch more news from the specified Apis please run in the terminal:
+ ```$xslt
+php artisan app:fetch-news
+```
+
+
 
 
 
