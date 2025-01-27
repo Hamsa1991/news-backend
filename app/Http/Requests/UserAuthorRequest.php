@@ -27,3 +27,4 @@ class UserAuthorRequest extends FormRequest
         ];
     }
 }
+

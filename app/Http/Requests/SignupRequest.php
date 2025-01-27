@@ -29,3 +29,4 @@ class SignupRequest extends FormRequest
         ];
     }
 }
+

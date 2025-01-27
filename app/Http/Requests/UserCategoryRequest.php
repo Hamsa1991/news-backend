@@ -27,3 +27,4 @@ class UserCategoryRequest extends FormRequest
         ];
     }
 }
+
