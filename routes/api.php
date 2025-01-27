@@ -31,3 +31,4 @@ Route::middleware('auth:sanctum')->group(function(){
 Route::post("/signup", [\App\Http\Controllers\Api\AuthController::class, 'signup']);
 Route::post("/login", [\App\Http\Controllers\Api\AuthController::class, 'login']);
 Route::get("/articles", [\App\Http\Controllers\Api\ArticleController::class, 'index']);
+
