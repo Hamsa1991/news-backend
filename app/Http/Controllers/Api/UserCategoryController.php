@@ -25,6 +25,5 @@ class UserCategoryController extends Controller
             Log::error("Error in saving favourite categories: " . $exception->getMessage());
             return response()->json(['message' => 'An error occurred while saving favorite categories.'], 500);
         }
-
     }
 }
