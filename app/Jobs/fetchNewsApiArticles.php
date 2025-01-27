@@ -42,5 +42,6 @@ class fetchNewsApiArticles implements ShouldQueue
         }catch (\Exception $exception){
             Log::error("Error in fetching News articles: " .$exception->getMessage());
         }
+
     }
 }

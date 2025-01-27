@@ -37,4 +37,5 @@ class GuardianNewsClass implements NewsApiInterface
         }
         return $data['response']['status'];
     }
+
 }

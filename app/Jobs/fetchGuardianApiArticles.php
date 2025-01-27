@@ -42,5 +42,6 @@ class fetchGuardianApiArticles implements ShouldQueue
         }catch (\Exception $exception){
             Log::error("error in fetching Guardian articles: " .$exception->getMessage());
         }
+
     }
 }

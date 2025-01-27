@@ -53,4 +53,5 @@ class NewsApiClass implements NewsApiInterface
         }
         return $data['status'];
     }
+
 }

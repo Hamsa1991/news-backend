@@ -28,4 +28,5 @@ class fetchNews extends Command
         \App\Jobs\fetchNewsApiArticles::dispatch();
         \App\Jobs\fetchGuardianApiArticles::dispatch();
     }
+
 }
