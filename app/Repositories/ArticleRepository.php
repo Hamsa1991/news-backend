@@ -85,3 +85,4 @@ class ArticleRepository implements ArticleRepositoryInterface
         return $article->delete();
     }
 }
+

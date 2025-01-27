@@ -40,3 +40,4 @@ class CategoryRepository implements CategoryRepositoryInterface
         return $Category->delete();
     }
 }
+

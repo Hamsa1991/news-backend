@@ -40,3 +40,4 @@ class AuthorRepository implements AuthorRepositoryInterface
         return $Author->delete();
     }
 }
+
