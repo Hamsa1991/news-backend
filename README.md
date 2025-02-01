@@ -32,8 +32,8 @@ DB_PASSWORD=
 In the terminal, navigate to the directory containing your Dockerfile and docker-compose.yml, then run:
 ```
 
-docker-compose build
-docker-compose up -d
+docker build --tag 'image_name'
+docker run --detach 'image_name'
 ```
 
 ### 4. Install Composer Dependencies
